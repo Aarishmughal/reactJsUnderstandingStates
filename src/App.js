@@ -1,24 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [btnState, setbtnState] = useState(0);
+  const handleClick = (value) => {
+    setbtnState(btnState+value);
+  }
+  const resetState = ()=>{
+    setbtnState(0);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={()=>handleClick(1)}>This is a button</button>
+      <p>Button State: {btnState}</p>
+      <button onClick={()=>handleClick(5)}>This button increases state by 5</button>
+      <p>Button State: {btnState}</p>
+      <button onClick={resetState}>Reset State</button>
+    </>
   );
 }
 
